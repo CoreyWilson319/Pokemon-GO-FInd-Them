@@ -60,14 +60,9 @@ app.get('/', (req, res) => {
   axios.request(options).then(function (pokemon) {
     const pokemonAPI = pokemon.data
     const pokemonList = [];
-
-    // for (let poke of pokemon.data) {
-    //   pokemonList.push(poke);
-    // }
     for (let poke in pokemonAPI) {
       pokemonList.push(pokemonAPI[poke]);
     }
-    // console.log(pokemonList)
 
 
     res.render('index', { alerts: res.locals.alerts, pokemonList});

@@ -2,21 +2,21 @@
   "development": {
     "username": "corey",
     "password": "corey",
-    "database": "express_auth_development",
+    "database": "PGF_development",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
     "username": "corey",
     "password": "corey",
-    "database": "express_auth_test",
+    "database": "PGF_test",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
     "username": "corey",
     "password": "corey",
-    "database": "express_auth_production",
+    "database": "PGF_production",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }

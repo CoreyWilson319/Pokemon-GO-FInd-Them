@@ -1,16 +1,7 @@
-/* nav ul li {
-  text-decoration: none;
-  display: inline-block;
-  margin-right: .3em;
-}
-
-h1 {
-  color: chartreuse;
-} */
-
 .auth_links {
   margin-left: 90rem;
   list-style-type: none;
+  display: inline-block;
 }
 
 #page_name {
@@ -24,4 +15,37 @@ ul {
   text-align: center;
   margin: 0 auto;
   list-style-type: none;
+}
+
+.container {
+  display: grid;
+  grid-template-areas: 
+    "header header header"
+    "left center right"
+    "footer1 footer2 footer3";
+  border: 10px;
+  border-color: black;
+}
+
+#left {
+  grid-area: center;
+}
+#center {
+  grid-area: left;
+}
+#right {
+  grid-area: right;
+}
+
+#footer1 {
+  grid-area: footer1;
+  text-align: center;
+}
+#footer2 {
+  grid-area: footer2;
+  text-align: center;
+}
+#footer3 {
+  grid-area: footer3;
+  text-align: center;
 }
