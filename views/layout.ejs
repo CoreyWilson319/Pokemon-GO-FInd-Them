@@ -3,13 +3,14 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Authentication</title>
+    <title>Pokemon Go Find Them</title>
     <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
     <header>
+      <a href="/">Home</a>
       <nav>
-        <ul>
+        <ul class="auth_links">
           <!-- if logged in only show logout and profile -->
           <% if (!currentUser) { %>
             <li><a href="/auth/signup">Signup</a></li> 
@@ -22,7 +23,7 @@
         </ul>
       </nav>
     </header>
-    <h1>Authentication</h1>
+    <h1 id="page_name">Pokemon Go Find Them</h1>
     <%- body %>
   </body>
 </html>

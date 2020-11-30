@@ -4,6 +4,7 @@ const layouts = require('express-ejs-layouts');
 const session = require('express-session');
 const passport = require('./config/ppConfig');
 const flash = require('connect-flash');
+const axios = require('axios').default;
 const SECRET_SESSION = process.env.SECRET_SESSION;
 // console.log(SECRET_SESSION)
 const app = express();
@@ -47,8 +48,32 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-  console.log(res.locals.alerts);
-  res.render('index', { alerts: res.locals.alerts });
+  // console.log(res.locals.alerts, "server line 51");
+    const options = {
+    method: 'GET',
+    url: "https://pokemon-go1.p.rapidapi.com/released_pokemon.json",
+    headers: {
+      'x-rapidapi-key': process.env.api_key,
+      'x-rapidapi-host': process.env.api_host,
+    }
+  };
+  axios.request(options).then(function (pokemon) {
+    const pokemonAPI = pokemon.data
+    const pokemonList = [];
+
+    // for (let poke of pokemon.data) {
+    //   pokemonList.push(poke);
+    // }
+    for (let poke in pokemonAPI) {
+      pokemonList.push(pokemonAPI[poke]);
+    }
+    // console.log(pokemonList)
+
+
+    res.render('index', { alerts: res.locals.alerts, pokemonList});
+  }).catch(function (error) {
+    console.error(error);
+  });
 });
 
 app.get('/profile', isLoggedIn, (req, res) => {

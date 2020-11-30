@@ -1,4 +1,4 @@
-nav ul li {
+/* nav ul li {
   text-decoration: none;
   display: inline-block;
   margin-right: .3em;
@@ -6,4 +6,22 @@ nav ul li {
 
 h1 {
   color: chartreuse;
+} */
+
+.auth_links {
+  margin-left: 90rem;
+  list-style-type: none;
+}
+
+#page_name {
+  text-align: center;
+}
+
+#index_home {
+  text-align: center;
+}
+ul {
+  text-align: center;
+  margin: 0 auto;
+  list-style-type: none;
 }

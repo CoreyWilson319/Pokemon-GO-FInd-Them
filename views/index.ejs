@@ -1,1 +1,7 @@
-<h2>Homepage</h2>
+<h3 id="index_home">Currently Released Pokemon</h3>
+<ul class="releasedPokemon">
+    <% pokemonList.forEach(pokemon => { %>
+        <li><%= pokemon.name %> <button><%= pokemon.id %></button></li>
+    <% }); %>
+
+</ul>
