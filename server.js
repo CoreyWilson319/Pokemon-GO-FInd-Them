@@ -6,6 +6,7 @@ const passport = require('./config/ppConfig');
 const flash = require('connect-flash');
 const axios = require('axios').default;
 const SECRET_SESSION = process.env.SECRET_SESSION;
+const db = require('./models')
 // console.log(SECRET_SESSION)
 const app = express();
 
@@ -63,6 +64,13 @@ app.get('/', (req, res) => {
     for (let poke in pokemonAPI) {
       pokemonList.push(pokemonAPI[poke]);
     }
+    pokemonList.forEach(pokemons => {
+      db.pokemon.findOrCreate({
+        where: {
+          pokeId: pokemons.id
+        }
+      })
+    })
 
 
     res.render('index', { alerts: res.locals.alerts, pokemonList});
