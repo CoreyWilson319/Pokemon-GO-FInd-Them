@@ -154,6 +154,9 @@ app.get('/profile', isLoggedIn, (req, res) => {
 app.post('/released', isLoggedIn, (req, res) => {
 
   // add form item to db here using find or create
+  const watchList = req.body
+
+
   res.redirect('released')
 })
 
