@@ -17,6 +17,12 @@ ul {
   list-style-type: none;
 }
 
+#title {
+  text-align: center;
+}
+#description {
+  text-align: center;
+}
 .container {
   display: grid;
   grid-template-areas: 

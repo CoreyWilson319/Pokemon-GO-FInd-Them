@@ -151,6 +151,12 @@ app.get('/profile', isLoggedIn, (req, res) => {
   res.render('profile');
 });
 
+app.post('/released', isLoggedIn, (req, res) => {
+
+  // add form item to db here using find or create
+  res.redirect('released')
+})
+
 app.use('/auth', require('./routes/auth'));
 
 
