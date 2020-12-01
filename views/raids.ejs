@@ -1,0 +1,7 @@
+<h1 id="releasedh1">Legendary Pokemon</h1>
+<p>Click the number to add the corresponding pokemon to your watchlist</p>
+<ul>
+    <% pokemonList.forEach(poke => { %>
+        <li> <%= poke.name %>, Raid Level: <%= poke.raid_level %> <button><%= poke.id %></button></li>
+    <% }); %>
+</ul>

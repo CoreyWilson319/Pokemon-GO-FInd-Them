@@ -82,6 +82,71 @@ app.get('/', (req, res) => {
   });
 });
 
+
+app.get('/released', (req, res) => {
+  var options = {
+    method: 'GET',
+    url: 'https://pokemon-go1.p.rapidapi.com/released_pokemon.json',
+    headers: {
+      'x-rapidapi-key': process.env.api_key,
+      'x-rapidapi-host': process.env.api_host
+    }
+  };
+  
+  axios.request(options).then(function (response) {
+    const pokemon = response.data
+    const pokemonList = [];
+    for (let poke in pokemon) {
+      pokemonList.push(pokemon[poke]);
+    }
+    res.render('released', { pokemonList })
+  }).catch(function (error) {
+    console.error(error);
+  });
+
+})
+
+app.get('/legendaries', (req, res) => {
+  var options = {
+    method: 'GET',
+    url: 'https://pokemon-go1.p.rapidapi.com/pokemon_rarity.json',
+    headers: {
+      'x-rapidapi-key': process.env.api_key,
+      'x-rapidapi-host': process.env.api_host
+    }
+  };
+  
+  axios.request(options).then(function (response) {
+    const pokemon = response.data.Legendary
+    res.render('legendaries', { pokemon })
+  }).catch(function (error) {
+    console.error(error);
+  });
+
+})
+
+app.get('/raids', (req, res) => {
+  var options = {
+    method: 'GET',
+    url: 'https://pokemon-go1.p.rapidapi.com/raid_exclusive_pokemon.json',
+    headers: {
+      'x-rapidapi-key': process.env.api_key,
+      'x-rapidapi-host': process.env.api_host
+    }
+  };
+  
+  axios.request(options).then(function (response) {
+    const pokemon = response.data
+    const pokemonList = [];
+    for (let poke in pokemon) {
+      pokemonList.push(pokemon[poke]);
+    }
+    res.render('raids', { pokemonList })
+  }).catch(function (error) {
+    console.error(error);
+  });
+})
+
 app.get('/profile', isLoggedIn, (req, res) => {
   res.render('profile');
 });

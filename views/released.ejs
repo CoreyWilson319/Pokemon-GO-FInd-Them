@@ -1,0 +1,7 @@
+<h1 id="releasedh1">Currently Released Pokemon</h1>
+<p>Click the number to add the corresponding pokemon to your watchlist</p>
+<ul>
+    <% pokemonList.forEach(pokemon => { %>
+        <li> <%= pokemon.name %> <button><%= pokemon.id %></button></li>
+    <% }); %>
+</ul>
