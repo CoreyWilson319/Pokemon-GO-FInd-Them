@@ -68,6 +68,9 @@ app.get('/', (req, res) => {
       db.pokemon.findOrCreate({
         where: {
           pokeId: pokemons.id
+        },
+        defaults: {
+          name: pokemons.name
         }
       })
     })
