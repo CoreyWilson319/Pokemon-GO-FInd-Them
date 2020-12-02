@@ -24,13 +24,7 @@ ul {
   text-align: center;
 }
 #error {
-  background-image: url("/imgs/pikachu_ko.jpeg");
   height: 500px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  /* background-color: brown; */
 }
 .container {
   display: grid;

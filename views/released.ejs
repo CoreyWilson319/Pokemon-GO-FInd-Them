@@ -1,11 +1,14 @@
 <h2 id="title">Currently Released Pokemon</h2>
 <p id="description">Click the number to add the corresponding pokemon to your watchlist</p>
 
-<form action="released" method="POST">
 <ul>
     <% pokemonList.forEach(pokemon => { %>
-        <li> <%= pokemon.name %> <button type="submit"><%= pokemon.id %></button></li>
-        <input hidden type="text" name="name" value="<%= pokemon.id %>">
-    <% }); %>
+        <li> <%= pokemon.name %> 
+            <pre><%= JSON.stringify(pokemon) %></pre>
+    <form action="/released" method="POST">
+        <input hidden type="text" name= "id" value="<%= pokemon.id %>">
+        <button><%= pokemon.id %></button>
+    </form>
+</li>
+<% }); %>
 </ul>
-</form>
