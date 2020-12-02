@@ -152,12 +152,19 @@ app.get('/profile', isLoggedIn, (req, res) => {
 });
 
 app.post('/released', isLoggedIn, (req, res) => {
-
   // add form item to db here using find or create
-  const watchList = req.body
+  // const watchList = req.body
+  // db.userPokemon.findOrCreate({
+  //   where: {
+  //     pokemonId: watchList.id
+  //   },
+  //   defaults: {
+  //     name: watchList.name
+  //   }
+  // })
 
-
-  res.redirect('released')
+  // res.redirect('released')
+  res.send(req.body)
 })
 
 app.use('/auth', require('./routes/auth'));

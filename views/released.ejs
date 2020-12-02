@@ -4,7 +4,7 @@
 <form action="released" method="POST">
 <ul>
     <% pokemonList.forEach(pokemon => { %>
-        <li> <%= pokemon.name %> <button><%= pokemon.id %></button></li>
+        <li> <%= pokemon.name %> <button type="submit"><%= pokemon.id %></button></li>
     <% }); %>
 </ul>
 </form>
