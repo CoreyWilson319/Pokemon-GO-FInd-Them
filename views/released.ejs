@@ -5,6 +5,7 @@
 <ul>
     <% pokemonList.forEach(pokemon => { %>
         <li> <%= pokemon.name %> <button type="submit"><%= pokemon.id %></button></li>
+        <input hidden type="text" name="name" value="<%= pokemon.id %>">
     <% }); %>
 </ul>
 </form>
