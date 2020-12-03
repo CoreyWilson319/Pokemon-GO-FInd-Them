@@ -7,6 +7,7 @@ const flash = require('connect-flash');
 const axios = require('axios').default;
 const SECRET_SESSION = process.env.SECRET_SESSION;
 const db = require('./models')
+const methodOverride = require('method-override');
 // console.log(SECRET_SESSION)
 const app = express();
 
@@ -18,6 +19,7 @@ app.set('view engine', 'ejs');
 app.use(require('morgan')('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname + '/public'));
+app.use(methodOverride('_method'));
 app.use(layouts);
 
 // secret: What we actually will be giving the user on our site as a session cookie
@@ -167,8 +169,6 @@ app.get('/profile', isLoggedIn, (req, res) => {
       for (let poke in pokemon) {
         pokemonList.push(pokemon[poke]);
       }
-      console.log(watchlist)
-      // res.render('released', { pokemonList })
       res.render('profile', { watchlist, pokemonList });
     }).catch(function (error) {
       console.error(error);
@@ -188,7 +188,16 @@ app.post('/released', isLoggedIn, (req, res) => {
   })
 
   res.redirect('released')
-})
+});
+app.delete('/profile/:id', isLoggedIn, (req, res) => {
+  db.userPokemon.destroy({
+    where: {
+      pokemonId: req.params.id,
+      userId: req.user.id
+    }
+  })
+  res.redirect('/profile')
+});
 // app.get('*', function(req, res){
 //   res.status(404).render('error');
 // });

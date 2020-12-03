@@ -4,7 +4,6 @@
 <ul>
     <% pokemonList.forEach(pokemon => { %>
         <li> <%= pokemon.name %> 
-            <pre><%= JSON.stringify(pokemon) %></pre>
     <form action="/released" method="POST">
         <input hidden type="text" name= "id" value="<%= pokemon.id %>">
         <button><%= pokemon.id %></button>
