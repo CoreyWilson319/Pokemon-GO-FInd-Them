@@ -190,13 +190,16 @@ app.post('/released', isLoggedIn, (req, res) => {
   res.redirect('released')
 });
 app.delete('/profile/:id', isLoggedIn, (req, res) => {
-  db.userPokemon.destroy({
+  db.userPokemon.findOne({
     where: {
       pokemonId: req.params.id,
       userId: req.user.id
     }
+  }).then((foundPkmn) => {
+    foundPkmn.destroy().then(() => {
+      res.redirect('/profile')
+    })
   })
-  res.redirect('/profile')
 });
 // app.get('*', function(req, res){
 //   res.status(404).render('error');
