@@ -148,18 +148,41 @@ app.get('/raids', (req, res) => {
 })
 
 app.get('/profile', isLoggedIn, (req, res) => {
+  db.userPokemon.findAll({
+    where: {
+      userId: req.user.id
+    }
+  }).then(watchlist => {
+    var options = {
+      method: 'GET',
+      url: 'https://pokemon-go1.p.rapidapi.com/released_pokemon.json',
+      headers: {
+        'x-rapidapi-key': process.env.api_key,
+        'x-rapidapi-host': process.env.api_host
+      }
+    };
+    axios.request(options).then(function (response) {
+      const pokemon = response.data
+      const pokemonList = [];
+      for (let poke in pokemon) {
+        pokemonList.push(pokemon[poke]);
+      }
+      console.log(watchlist)
+      // res.render('released', { pokemonList })
+      res.render('profile', { watchlist, pokemonList });
+    }).catch(function (error) {
+      console.error(error);
+    });
+  }).catch(function(err){
+    console.log(err)
+  })
 
-
-  res.render('profile');
 });
 
 app.post('/released', isLoggedIn, (req, res) => {
-  console.log("req.params", req.params)
-  console.log(req.user.id)
   db.userPokemon.findOrCreate({
     where: {
-      pokemonId: req.body.id
-    }, defaults: {
+      pokemonId: req.body.id,
       userId: req.user.id
     }
   })

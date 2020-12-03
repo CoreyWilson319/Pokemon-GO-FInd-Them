@@ -1,3 +1,19 @@
 <h2>Profile Page</h2>
 
 <h3>Welcome to your PROFILE</h3>
+
+<h4>Watch List</h4>
+
+<ul>    
+    <% watchlist.forEach(watch => { %>
+        <!-- Loop through pokemonList to get the pokemons id-->
+        <% for (const pokemon of pokemonList) { %>
+
+            <% if (watch.pokemonId === pokemon.id ) { %>
+                <li> <%=pokemon.name%> </li>
+           <% } %>
+           <% } %>
+        <% }); %>
+            
+
+</ul>
