@@ -31,7 +31,8 @@ ul {
   grid-template-areas: 
     "header header header"
     "left center right"
-    "footer1 footer2 footer3";
+    "footer1 footer2 footer3"
+    ". footer4 .";
   border: 10px;
   border-color: black;
 }
@@ -57,4 +58,9 @@ ul {
 #footer3 {
   grid-area: footer3;
   text-align: center;
+}
+#footer4 {
+  grid-area: footer4;
+  text-align: center;
+  margin-top: 250px;
 }

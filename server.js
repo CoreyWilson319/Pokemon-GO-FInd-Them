@@ -201,6 +201,12 @@ app.delete('/profile/:id', isLoggedIn, (req, res) => {
     })
   })
 });
+
+app.get('/messageboard', (req, res) => {
+
+
+  res.render('messageboard')
+})
 // app.get('*', function(req, res){
 //   res.status(404).render('error');
 // });
