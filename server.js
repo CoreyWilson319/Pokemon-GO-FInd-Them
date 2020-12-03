@@ -30,7 +30,7 @@ const sessionObject = {
   secret: SECRET_SESSION,
   resave: false,
   saveUninitialized: true
-}
+};
 
 app.use(session(sessionObject));
 
@@ -106,7 +106,7 @@ app.get('/released', (req, res) => {
     console.error(error);
   });
 
-})
+});
 
 app.get('/legendaries', (req, res) => {
   var options = {
@@ -125,7 +125,7 @@ app.get('/legendaries', (req, res) => {
     console.error(error);
   });
 
-})
+});
 
 app.get('/raids', (req, res) => {
   var options = {
@@ -147,7 +147,7 @@ app.get('/raids', (req, res) => {
   }).catch(function (error) {
     console.error(error);
   });
-})
+});
 
 app.get('/profile', isLoggedIn, (req, res) => {
   db.userPokemon.findAll({
@@ -203,10 +203,41 @@ app.delete('/profile/:id', isLoggedIn, (req, res) => {
 });
 
 app.get('/messageboard', (req, res) => {
+  db.post.findAll().then(allPost => {
+    res.render('messageboard', { allPost })
 
+  })
+});
 
-  res.render('messageboard')
-})
+app.post('/messageboard', (req, res) => {
+  db.post.create({
+    creator: req.body.creator,
+    content: req.body.content
+  }).then( ()=> {
+  res.redirect('messageboard')
+  })
+});
+
+app.get('/messageboard/post/:id', (req, res) => {
+  db.post.findOne({
+    where: {
+      id: req.params.id
+    }
+  }).then((post) => {res.render('editPost', { post })})
+  
+});
+
+app.put('/messageboard/post/:id', (req, res) => {
+  db.post.update({
+    content: req.body.content
+  }), {
+    where: {
+      id: req.params.id
+    }
+  }
+  res.redirect('/messageboard')
+});
+
 // app.get('*', function(req, res){
 //   res.status(404).render('error');
 // });
@@ -214,7 +245,7 @@ app.get('/messageboard', (req, res) => {
 app.use('/auth', require('./routes/auth'));
 
 
-const PORT = process.env.PORT || 3111;
+const PORT = process.env.PORT || 4006;
 const server = app.listen(PORT, () => {
   console.log(`🎧 You're listening to the smooth sounds of port ${PORT} 🎧`);
 });

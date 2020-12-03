@@ -1,0 +1,7 @@
+<form method="POST" action="/messageboard/post/<%=post.id%>/?_method=PUT">
+    <label>Creator</label>
+    <input type="text" name="creator" value="<%= post.creator %>">
+    <label>Content</label>
+    <input type="text" name="content" value="<%= post.content %>">
+    <input type="submit">
+</form>
