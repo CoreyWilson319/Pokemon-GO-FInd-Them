@@ -148,28 +148,27 @@ app.get('/raids', (req, res) => {
 })
 
 app.get('/profile', isLoggedIn, (req, res) => {
+
+
   res.render('profile');
 });
 
 app.post('/released', isLoggedIn, (req, res) => {
-  // add form item to db here using find or create
-  const watchList = req.body.id
-  console.log(watchList)
+  console.log("req.params", req.params)
+  console.log(req.user.id)
   db.userPokemon.findOrCreate({
     where: {
-      pokemonId: watchList
-    },
-    // defaults: {
-    //   name: watchList.name
-    // }
+      pokemonId: req.body.id
+    }, defaults: {
+      userId: req.user.id
+    }
   })
 
   res.redirect('released')
-  // res.send(req.body)
 })
-app.get('*', function(req, res){
-  res.status(404).render('error');
-});
+// app.get('*', function(req, res){
+//   res.status(404).render('error');
+// });
 
 app.use('/auth', require('./routes/auth'));
 
