@@ -3,10 +3,10 @@
 
 <ul>
     <% pokemonList.forEach(pokemon => { %>
-        <li> <%= pokemon.name %> 
+        <li> <a href="/pokemon/<%=pokemon.id%>"><%= pokemon.name %></a> 
     <form action="/released" method="POST">
         <input hidden type="text" name= "id" value="<%= pokemon.id %>">
-        <button><%= pokemon.id %></button>
+        <button>Click to add to watchlist <%= pokemon.id %></button>
     </form>
 </li>
 <% }); %>
