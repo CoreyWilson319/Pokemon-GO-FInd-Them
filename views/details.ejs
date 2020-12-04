@@ -15,7 +15,9 @@
             <% if (pokemon.pokemon_id == id) { %>
                 <li>Form: <%=pokemon.form%></li>
                 <li>Candies to Evolve: <%=pokemon.candy_required%></li>
-            <% } %>
-        <% }) %>
-    <% }) %>
+                <li><br></li>
+                <% } %>
+                <% }) %>
+                <% }) %>
+                <li><a href="stats/<%=id%>">Stats</a></li>
 </ul>

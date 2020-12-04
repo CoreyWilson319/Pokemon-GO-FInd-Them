@@ -240,5 +240,24 @@ res.render('details', { moveList, candyList, id})
   details()
   
 })
+router.get('/pokemon/stats/:id', (req, res) => {
+  const id = req.params.id
+  const options = {
+    method: 'GET',
+    url: 'https://pokemon-go1.p.rapidapi.com/pokemon_stats.json',
+    headers: {
+      'x-rapidapi-key': process.env.api_key,
+      'x-rapidapi-host': process.env.api_host
+    }
+  };
+  
+  axios.request(options).then(function (response) {
+    const stats = response.data;
+    console.log(stats)
+    res.render('stats', { stats, id })
+  }).catch(function (error) {
+    console.error(error);
+  });
+})
 
   module.exports = router
