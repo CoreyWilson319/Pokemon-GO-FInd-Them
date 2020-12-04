@@ -1,10 +1,10 @@
 <ul>
     <% moveList.forEach(move => { %>
-        <pre><%=move.pokemon_id%></pre>
-      <% if (move.pokemon_id === id){  %>
-        <li><%=move.charged_moves%></li>
-        <pre><%=move.charged_moves%></pre>
-      <% } %>
+    <pre><%=move.pokemon_id%></pre>
+    <% if (move.pokemon_id === id){  %>
+    <li><%=move.charged_moves%></li>
+    <pre><%=move.charged_moves%></pre>
+    <% } %>
     <% }); %>
     <li></li>
 </ul>
