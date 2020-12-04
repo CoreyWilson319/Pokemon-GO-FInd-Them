@@ -2,6 +2,6 @@
 <p id="description">Click the number to add the corresponding pokemon to your watchlist</p>
 <ul>
     <% pokemon.forEach(poke => { %>
-        <li> <%= poke.pokemon_name %>, <%= poke.form %> <button><%= poke.pokemon_id %></button></li>
+        <li> <a href="/pokemon/<%=poke.pokemon_id%>"><%= poke.pokemon_name %>, <%= poke.form %></a></li>
     <% }); %>
 </ul>

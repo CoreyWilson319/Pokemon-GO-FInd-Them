@@ -1,46 +1,11 @@
 require('dotenv').config();
 const express = require('express');
-// const layouts = require('express-ejs-layouts');
-// const session = require('express-session');
 const passport = require('../config/ppConfig');
-// const flash = require('connect-flash');
 const axios = require('axios').default;
-// const SECRET_SESSION = process.env.SECRET_SESSION;
 const router = express.Router();
 const db = require('../models')
-// console.log(SECRET_SESSION)
-// const router = express();
 
 const isLoggedIn = require('../middleware/isLoggedIn');
-
-// router.use('/auth', require('../routes/auth')); 
-
-// const sessionObject = {
-//     secret: SECRET_SESSION,
-//     resave: false,
-//     saveUninitialized: true
-//   };
-  
-//   router.use(session(sessionObject));
-  
-  // Initialize passport and run through middleware
-  // router.use(passport.initialize());
-  // router.use(passport.session());
-  // router.use(layouts);
-  
-  // Flash
-  // Using flash to throughout router to send temp messages to user
-// router.use((req, res, next) => {
-//     // Before every route, we will attach a user to res.local
-//     res.locals.alerts = req.flash();
-//     res.locals.currentUser = req.user;
-//     next();
-// });
-// router.use(flash());
-
-
-// Messages that will be accessible to every view
-
 
 router.get('/', (req, res) => {
   // console.log(res.locals.alerts, "server line 51");

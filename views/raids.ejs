@@ -2,6 +2,6 @@
 <p id="description">Click the number to add the corresponding pokemon to your watchlist</p>
 <ul>
     <% pokemonList.forEach(poke => { %>
-        <li> <%= poke.name %>, Raid Level: <%= poke.raid_level %> <button><%= poke.id %></button></li>
+        <li> <a href="/pokemon/<%=poke.id%>"><%= poke.name %>, Raid Level: <%= poke.raid_level %></a></li>
     <% }); %>
 </ul>
