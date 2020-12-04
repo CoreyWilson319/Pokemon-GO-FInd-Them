@@ -228,15 +228,15 @@ app.get('/messageboard/post/:id', (req, res) => {
 });
 
 app.put('/messageboard/post/:id', (req, res) => {
-  console.log(req.body.content)
+  console.log("Hello", req.body.content)
+  console.log(req.params.id)
   db.post.update({
     content: req.body.content
-  }), {
+  }, {
     where: {
       id: req.params.id
     }
-    // Left off here errors on edit
-  }.then(res.redirect('/messageboard'))
+  }).then( () => {res.redirect('/messageboard')})
 });
 
 // app.get('*', function(req, res){
@@ -246,7 +246,7 @@ app.put('/messageboard/post/:id', (req, res) => {
 app.use('/auth', require('./routes/auth'));
 
 
-const PORT = process.env.PORT || 4008;
+const PORT = process.env.PORT || 4115;
 const server = app.listen(PORT, () => {
   console.log(`🎧 You're listening to the smooth sounds of port ${PORT} 🎧`);
 });
