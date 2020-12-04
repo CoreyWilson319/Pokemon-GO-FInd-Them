@@ -10,7 +10,7 @@
         <% for (const pokemon of pokemonList) { %>
 
             <% if (watch.pokemonId === pokemon.id ) { %>
-                <li> <%=pokemon.name%> </li>
+                <li> <a href="pokemon/<%=pokemon.id%>"><%=pokemon.name%></a></li>
                 <form method="POST" action="/profile/<%=watch.pokemonId%>?_method=DELETE">
                     <!-- <input hidden type="submit" name= "id" value="Delete"> -->
                     <button>Remove from Watch List <%= watch.pokemonId %></button>

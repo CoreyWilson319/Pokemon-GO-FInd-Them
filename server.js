@@ -86,7 +86,7 @@ app.get('/', (req, res) => {
 
 
 app.get('/released', (req, res) => {
-  var options = {
+  const options = {
     method: 'GET',
     url: 'https://pokemon-go1.p.rapidapi.com/released_pokemon.json',
     headers: {
@@ -239,9 +239,50 @@ app.put('/messageboard/post/:id', (req, res) => {
   }).then( () => {res.redirect('/messageboard')})
 });
 
-// app.get('*', function(req, res){
-//   res.status(404).render('error');
-// });
+app.get('/pokemon/:id', (req, res) => {
+  const id = req.params.id
+  console.log(id)
+
+  async function details () {
+    const moveList = []
+    const candyList = []
+    var options = await {
+    method: 'GET',
+    url: 'https://pokemon-go1.p.rapidapi.com/current_pokemon_moves.json',
+    headers: {
+      'x-rapidapi-key': process.env.api_key,
+      'x-rapidapi-host': process.env.api_host
+    }
+  };
+  
+  const moves = await axios.request(options)
+
+var options2 = await {
+  method: 'GET',
+  url: 'https://pokemon-go1.p.rapidapi.com/pokemon_candy_to_evolve.json',
+  headers: {
+    'x-rapidapi-key': process.env.api_key,
+    'x-rapidapi-host': process.env.api_host
+  }
+};
+
+const candy = await axios.request(options2)
+for (const move in moves.data) {
+  moveList.push(moves[move])
+  console.log(moveList)
+}
+for (const pCandy in candy) {
+  candyList.push(candy[pCandy])
+}
+// console.log(moveList.data)
+// console.log(candyList)
+
+res.render('details', { moveList, candyList, id})
+
+}
+  details()
+  
+})
 
 app.use('/auth', require('./routes/auth'));
 

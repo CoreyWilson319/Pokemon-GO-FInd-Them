@@ -1,0 +1,13 @@
+<ul>
+    <% moves.forEach(move => { %>
+        <% if (move.pokemon_id === id) {%>
+        <li><%= move.name %></li>
+        <pre><%= move.name %></pre>
+        <li><%= move.form %></li>
+        <li><%= move.charged_moves %></li>
+        <%if (move.elite_charged_moves) { %>
+            <li><%=move.elite_charged_moves%></li>
+        <% } %>
+        <% } %>
+    <% }); %>
+</ul>
