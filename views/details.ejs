@@ -8,14 +8,14 @@
     <li>Elite Fast Moves: <%= move.elite_fast_moves %></li>
     <li>Elite Charged Moves: <%= move.elite_charged_moves %></li>
     <li><br></li>
+    <% } %>
+    <% }); %>
     <% candyList.forEach(candyTier => { %>
         <% candyTier.forEach(pokemon => { %>
             <% if (pokemon.pokemon_id == id) { %>
-                <li><%=pokemon.candy_required%></li>
+                <li>Form: <%=pokemon.form%></li>
+                <li>Candies to Evolve: <%=pokemon.candy_required%></li>
             <% } %>
         <% }) %>
     <% }) %>
-
-    <% } %>
-    <% }); %>
 </ul>
