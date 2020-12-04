@@ -248,7 +248,7 @@ router.get('/pokemon/:id', (req, res) => {
   };
   
   const moves = await axios.request(options)
-console.log(moves.data)
+  
 var options2 = await {
   method: 'GET',
   url: 'https://pokemon-go1.p.rapidapi.com/pokemon_candy_to_evolve.json',
@@ -259,19 +259,15 @@ var options2 = await {
 };
 
 const candy = await axios.request(options2)
-// for (const move in moves.data) {
-//   moveList.push(moves[move])
-//   console.log(moveList)
-// }
-// moves.forEach(move => {
-  
-// });
-for (const pCandy in candy) {
-  candyList.push(candy[pCandy])
+moves.data.forEach(move => {
+  moveList.push(move)
+})
+
+const knowncandy = candy.data
+for (const pokemon in knowncandy) {
+  candyList.push(knowncandy[pokemon])
 }
-// console.log(moves.data)
-// console.log(candyList)
-console.log("moves", moveList)
+console.log(candyList)
 
 res.render('details', { moveList, candyList, id})
 
@@ -279,6 +275,5 @@ res.render('details', { moveList, candyList, id})
   details()
   
 })
-
 
   module.exports = router

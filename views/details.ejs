@@ -1,10 +1,21 @@
 <ul>
     <% moveList.forEach(move => { %>
-    <pre><%=move.pokemon_id%></pre>
-    <% if (move.pokemon_id === id){  %>
-    <li><%=move.charged_moves%></li>
-    <pre><%=move.charged_moves%></pre>
+    <% if (move.pokemon_id == id){  %>
+    <li>Name: <%=move.pokemon_name%></li>
+    <li>Form: <%=move.form%></li>
+    <li>Charge Moves: <%=move.charged_moves%></li>
+    <li>Fast Moves: <%=move.fast_moves%></li>
+    <li>Elite Fast Moves: <%= move.elite_fast_moves %></li>
+    <li>Elite Charged Moves: <%= move.elite_charged_moves %></li>
+    <li><br></li>
+    <% candyList.forEach(candyTier => { %>
+        <% candyTier.forEach(pokemon => { %>
+            <% if (pokemon.pokemon_id == id) { %>
+                <li><%=pokemon.candy_required%></li>
+            <% } %>
+        <% }) %>
+    <% }) %>
+
     <% } %>
     <% }); %>
-    <li></li>
 </ul>
