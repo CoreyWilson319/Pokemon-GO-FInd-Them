@@ -1,22 +1,20 @@
-<h2>Profile Page</h2>
+<h2 id="profile">Profile Page</h2>
+<h3 id="profile">Welcome to your PROFILE</h3>
+<h4 id="profile">Watch List</h4>
 
-<h3>Welcome to your PROFILE</h3>
-
-<h4>Watch List</h4>
-
-<ul>    
-    <% watchlist.forEach(watch => { %>
-        <!-- Loop through pokemonList to get the pokemons id-->
-        <% for (const pokemon of pokemonList) { %>
-
-            <% if (watch.pokemonId === pokemon.id ) { %>
-                <li> <a href="pokemon/<%=pokemon.id%>"><%=pokemon.name%></a></li>
-                <form method="POST" action="/profile/<%=watch.pokemonId%>?_method=DELETE">
-                    <!-- <input hidden type="submit" name= "id" value="Delete"> -->
-                    <button>Remove from Watch List <%= watch.pokemonId %></button>
-                </form>
-           <% } %>
-           <% } %>
-        <% }); %>
-        
+<ul>
+  <% watchlist.forEach(watch => { %>
+  <!-- Loop through pokemonList to get the pokemons id-->
+  <% for (const pokemon of pokemonList) { %> <% if (watch.pokemonId ===
+  pokemon.id ) { %>
+  <li id="profileButton">
+    <a id="links" href="pokemon/<%=pokemon.id%>"><%=pokemon.name%></a>
+  </li>
+  <form method="POST" action="/profile/<%=watch.pokemonId%>?_method=DELETE">
+    <!-- <input hidden type="submit" name= "id" value="Delete"> -->
+    <button>Remove from Watch List <%= watch.pokemonId %></button>
+  </form>
+  <% } %> 
+  <% } %> 
+  <% }); %>
 </ul>

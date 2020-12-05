@@ -1,25 +1,24 @@
-require('dotenv').config();
-const express = require('express');
-const layouts = require('express-ejs-layouts');
-const session = require('express-session');
-const passport = require('./config/ppConfig');
-const flash = require('connect-flash');
+require("dotenv").config();
+const express = require("express");
+const layouts = require("express-ejs-layouts");
+const session = require("express-session");
+const passport = require("./config/ppConfig");
+const flash = require("connect-flash");
 const SECRET_SESSION = process.env.SECRET_SESSION;
-const methodOverride = require('method-override');
+const methodOverride = require("method-override");
 // console.log(SECRET_SESSION)
 const app = express();
 
 // isLoggedIn middleware
-const isLoggedIn = require('./middleware/isLoggedIn');
+const isLoggedIn = require("./middleware/isLoggedIn");
 
-app.set('view engine', 'ejs');
+app.use(express.static(__dirname + "/public"));
+app.set("view engine", "ejs");
 
-app.use(require('morgan')('dev'));
+app.use(require("morgan")("dev"));
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(__dirname + '/public'));
-app.use(methodOverride('_method'));
+app.use(methodOverride("_method"));
 app.use(layouts);
-
 
 // secret: What we actually will be giving the user on our site as a session cookie
 // resave: Save the session even if it's modified, make this false
@@ -28,7 +27,7 @@ app.use(layouts);
 const sessionObject = {
   secret: SECRET_SESSION,
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: true,
 };
 
 app.use(session(sessionObject));
@@ -49,9 +48,9 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/auth', require('./routes/auth'));
+app.use("/auth", require("./routes/auth"));
 
-app.use('/', require('./routes/pokemon'));
+app.use("/", require("./routes/pokemon"));
 const PORT = process.env.PORT || 4115;
 const server = app.listen(PORT, () => {
   console.log(`🎧 You're listening to the smooth sounds of port ${PORT} 🎧`);

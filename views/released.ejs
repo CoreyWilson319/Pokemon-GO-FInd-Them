@@ -1,13 +1,20 @@
-<h2 id="title">Currently Released Pokemon</h2>
-<p id="description">Click the link to see the details of that pokemon</p>
-
-<ul>
+<body class="released">
+  <h2 id="title">Currently Released Pokemon</h2>
+  <p id="description">Click the link to see the details of that pokemon</p>
+  <img
+    id="pikachuImg"
+    src="https://www.seekpng.com/png/detail/110-1107038_pikachu-face-png-transparent-pikachu-face-face-pikachu.png"
+    alt=""
+  />
+  <ul class="releasedLinks">
     <% pokemonList.forEach(pokemon => { %>
-        <li> <a href="/pokemon/<%=pokemon.id%>"><%= pokemon.name %></a> 
-    <form action="/released" method="POST">
-        <input hidden type="text" name= "id" value="<%= pokemon.id %>">
+    <li id="releasedLinks">
+      <a href="/pokemon/<%=pokemon.id%>"><%= pokemon.name %></a>
+      <form action="/released" method="POST">
+        <input hidden type="text" name="id" value="<%= pokemon.id %>" />
         <button>Click to add to watchlist <%= pokemon.id %></button>
-    </form>
-</li>
-<% }); %>
-</ul>
+      </form>
+    </li>
+    <% }); %>
+  </ul>
+</body>

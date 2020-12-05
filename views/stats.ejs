@@ -1,13 +1,10 @@
-<ul>
-    <% stats.forEach(pokemon => { %>
-        <% if (pokemon.pokemon_id == id) { %>
-            <li>Name: <%=pokemon.pokemon_name%></li>
-            <li>Form: <%=pokemon.form%></li>
-            <li>Attack: <%=pokemon.base_attack%></li>
-            <li>Defense: <%=pokemon.base_defense %></li>
-            <li>Stamina: <%=pokemon.base_stamina %></li>
-        <% } %>
-        <li><br></li>
-    <% }); %>
-
+<ul id="statsPage">
+  <% stats.forEach(pokemon => { %> <% if (pokemon.pokemon_id == id) { %>
+  <li id="details">Name: <%=pokemon.pokemon_name%></li>
+  <li id="details">Form: <%=pokemon.form%></li>
+  <li id="details">Attack: <%=pokemon.base_attack%></li>
+  <li id="details">Defense: <%=pokemon.base_defense %></li>
+  <li id="details">Stamina: <%=pokemon.base_stamina %></li>
+  <li><br /></li>
+  <% } %> <% }); %>
 </ul>

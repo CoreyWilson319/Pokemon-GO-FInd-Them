@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Pokemon Go Find Them</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
     <header>
-      <a href="/">Home</a>
+      <a id="links" href="/">Home</a>
       <nav>
         <ul class="auth_links">
           <!-- if logged in only show logout and profile -->
           <% if (!currentUser) { %>
-            <li><a href="/auth/signup">Signup</a></li> 
-            <li><a href="/auth/login">Login</a></li>
-          <% } else { %> 
-            <li><a href="/auth/logout">Logout</a></li>
-            <li><a href="/profile">Profile</a></li>
+          <li><a id="links" href="/auth/signup">Signup</a></li>
+          <li><a id="links" href="/auth/login">Login</a></li>
+          <% } else { %>
+          <li><a id="links" href="/auth/logout">Logout</a></li>
+          <li><a id="links" href="/profile">Profile</a></li>
           <% } %>
           <!-- if logged out show signup and login -->
         </ul>
       </nav>
       <h1 id="page_name">Pokemon Go Find Them</h1>
-        <%- body %>
+      <%- body %>
     </header>
   </body>
 </html>

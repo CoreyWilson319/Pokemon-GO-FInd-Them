@@ -1,14 +1,18 @@
-<ul>
+<div id="messageboard">
+  <ul>
     <% allPost.forEach(post => { %>
-        <li><%=post.creator%> : <%= post.content%></li>
-        <a href="/messageboard/post/<%= post.id %>">Edit</a>
+    <li id="post"><%=post.creator%> : <%= post.content%></li>
+    <a href="/messageboard/post/<%= post.id %>">Edit</a>
     <% }); %>
-</ul>
+  </ul>
+</div>
 
-
-<form action="messageboard"method="POST">
-    <input name="creator" type="text" placeholder="Name"> 
-    <input name="content" type="text" placeholder="Post Content"> 
-    <label for="content">Create a new Post here</label> <button type="submit">Submit</button>
-</form>
+<div id="newPost">
+  <form action="messageboard" method="POST">
+    <input name="creator" type="text" placeholder="Name" />
+    <input name="content" type="text" placeholder="Post Content" />
+    <label for="content">Create a new Post here</label>
+    <button type="submit">Submit</button>
+  </form>
+</div>
 <!-- might need to use method override again -->
