@@ -8,7 +8,7 @@ const db = require("../models");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
 router.get("/", (req, res) => {
-  // console.log(res.locals.alerts, "server line 51");
+
   const options = {
     method: "GET",
     url: "https://pokemon-go1.p.rapidapi.com/released_pokemon.json",
@@ -19,7 +19,7 @@ router.get("/", (req, res) => {
   };
   axios
     .request(options)
-    .then(function (pokemon) {
+    .then( function (pokemon) {
       const pokemonAPI = pokemon.data;
       const pokemonList = [];
       for (let poke in pokemonAPI) {
@@ -34,14 +34,20 @@ router.get("/", (req, res) => {
             name: pokemons.name,
           },
         });
-      });
+      })
+      // .then(()=> {
 
-      res.render("index", { alerts: res.locals.alerts, pokemonList });
+      //   const information = db.information.findAll()
+      //   information
+      // })
+        res.render("index", { alerts: res.locals.alerts, pokemonList });
     })
-    .catch(function (error) {
+    .catch((error) =>  {
       console.error(error);
     });
-});
+})
+
+;
 
 router.get("/released", (req, res) => {
   const options = {

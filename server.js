@@ -4,6 +4,7 @@ const layouts = require("express-ejs-layouts");
 const session = require("express-session");
 const passport = require("./config/ppConfig");
 const flash = require("connect-flash");
+const puppeteer = require('puppeteer');
 const SECRET_SESSION = process.env.SECRET_SESSION;
 const methodOverride = require("method-override");
 // console.log(SECRET_SESSION)
@@ -51,7 +52,7 @@ app.use((req, res, next) => {
 app.use("/auth", require("./routes/auth"));
 
 app.use("/", require("./routes/pokemon"));
-const PORT = process.env.PORT || 4115;
+const PORT = process.env.PORT || 4116;
 const server = app.listen(PORT, () => {
   console.log(`🎧 You're listening to the smooth sounds of port ${PORT} 🎧`);
 });
