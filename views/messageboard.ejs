@@ -2,7 +2,9 @@
   <ul>
     <% allPost.forEach(post => { %>
     <li id="post"><%=post.creator%> : <%= post.content%></li>
-    <a href="/messageboard/post/<%= post.id %>">Edit</a>
+    <% if (id === post.userId){ %>
+      <a href="/messageboard/post/<%= post.id %>">Edit</a>
+    <% } %>
     <% }); %>
   </ul>
 </div>
@@ -15,4 +17,3 @@
     <button type="submit">Submit</button>
   </form>
 </div>
-<!-- might need to use method override again -->

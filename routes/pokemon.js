@@ -35,11 +35,13 @@ router.get("/", (req, res) => {
           },
         });
       })
-      // .then(()=> {
+      // async function findInformation() {
+      //   const informations = await db.information.findAll()
+      //   await informations
+      //   await console.log(informations)
+      //   return
+      // }
 
-      //   const information = db.information.findAll()
-      //   information
-      // })
         res.render("index", { alerts: res.locals.alerts, pokemonList });
     })
     .catch((error) =>  {
@@ -180,19 +182,23 @@ router.delete("/profile/:id", isLoggedIn, (req, res) => {
     });
 });
 
-router.get("/messageboard", (req, res) => {
+router.get("/messageboard",isLoggedIn, (req, res) => {
   db.post.findAll().then((allPost) => {
-    res.render("messageboard", { allPost });
+    const id = req.user.dataValues.id
+
+    res.render("messageboard", { allPost, id });
   });
 });
 
-router.post("/messageboard", (req, res) => {
+router.post("/messageboard",isLoggedIn, (req, res) => {
   db.post
     .create({
       creator: req.body.creator,
       content: req.body.content,
+      userId: req.user.dataValues.id
     })
     .then(() => {
+      console.log(req.user.dataValues.id)
       res.redirect("messageboard");
     });
 });
