@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Pokemon Go Find Them</title>
     <link rel="stylesheet" href="/css/style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Nerko+One&family=Syne+Mono&display=swap" rel="stylesheet">
   </head>
   <body>
     <%- include('partials/alerts') %>
@@ -14,9 +16,9 @@
         <ul class="auth_links">
           <!-- if logged in only show logout and profile -->
           <% if (!currentUser) { %>
-          <li><a id="links" href="/auth/signup">Signup</a></li>
-          <li><a id="links" href="/auth/login">Login</a></li>
-          <li><a id="links" href="/messageboard">Message Board</a></li>
+          <li><a id="links" class="layout_links" href="/auth/signup">Signup</a></li>
+          <li><a id="links" class="layout_links" href="/auth/login">Login</a></li>
+          <li><a id="links" class="layout_links" href="/messageboard">Message Board</a></li>
           <% } else { %>
             <li><a id="links" href="/auth/logout">Logout</a></li>
             <li><a id="links" href="/profile">Profile</a></li>

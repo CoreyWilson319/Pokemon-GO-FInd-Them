@@ -3,11 +3,16 @@ body {
   background-color: #cccccc;
   background-size: auto;
   background-repeat: no-repeat;
+  font-family: 'Nerko One', cursive;
+  /* font-family: 'Syne Mono', monospace; */
 }
 .auth_links {
   margin-left: 90%;
   list-style-type: none;
   display: inline-block;
+}
+.layout_links {
+  border: 10px solid black;
 }
 
 #page_name {
@@ -151,4 +156,8 @@ ul {
   grid-area: footer4;
   text-align: center;
   margin-top: 250px;
+}
+
+.footer {
+  color: white
 }
