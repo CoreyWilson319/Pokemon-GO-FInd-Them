@@ -7,7 +7,6 @@ const flash = require("connect-flash");
 const puppeteer = require('puppeteer');
 const SECRET_SESSION = process.env.SECRET_SESSION;
 const methodOverride = require("method-override");
-// console.log(SECRET_SESSION)
 const app = express();
 
 // isLoggedIn middleware
@@ -48,6 +47,7 @@ app.use((req, res, next) => {
   res.locals.currentUser = req.user;
   next();
 });
+
 
 app.use("/auth", require("./routes/auth"));
 

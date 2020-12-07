@@ -47,7 +47,6 @@ scraperUpdates('https://pokemongolive.com/post/?hl=en')
 });
 scraperEvents('https://pokemongohub.net/post/news/celebrate-pokemon-the-movie-secrets-of-the-jungle-with-a-collaboration-event-featuring-shiny-celebi-in-special-research-and-jessie-and-jamess-return-to-pokemon-go/')
 .then((eventsTxt) =>{
-    // console.log(eventsTxt)
     db.information.findOrCreate({
         where: {
         events: eventsTxt

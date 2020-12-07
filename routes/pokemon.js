@@ -35,13 +35,6 @@ router.get("/", (req, res) => {
           },
         });
       })
-      // async function findInformation() {
-      //   const informations = await db.information.findAll()
-      //   await informations
-      //   await console.log(informations)
-      //   return
-      // }
-
         res.render("index", { alerts: res.locals.alerts, pokemonList });
     })
     .catch((error) =>  {
@@ -198,7 +191,6 @@ router.post("/messageboard",isLoggedIn, (req, res) => {
       userId: req.user.dataValues.id
     })
     .then(() => {
-      console.log(req.user.dataValues.id)
       res.redirect("messageboard");
     });
 });
@@ -216,8 +208,6 @@ router.get("/messageboard/post/:id", (req, res) => {
 });
 
 router.put("/messageboard/post/:id", (req, res) => {
-  console.log("Hello", req.body.content);
-  console.log(req.params.id);
   db.post
     .update(
       {
@@ -236,7 +226,6 @@ router.put("/messageboard/post/:id", (req, res) => {
 
 router.get("/pokemon/:id", (req, res) => {
   const id = req.params.id;
-  console.log(id);
 
   async function details() {
     const moveList = [];
@@ -270,7 +259,6 @@ router.get("/pokemon/:id", (req, res) => {
     for (const pokemon in knowncandy) {
       candyList.push(knowncandy[pokemon]);
     }
-    console.log(candyList);
 
     res.render("details", { moveList, candyList, id });
   }
@@ -290,7 +278,6 @@ router.get("/pokemon/stats/:id", (req, res) => {
     .request(options)
     .then(function (response) {
       const stats = response.data;
-      console.log(stats);
       res.render("stats", { stats, id });
     })
     .catch(function (error) {
