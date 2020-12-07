@@ -163,3 +163,8 @@ ul {
 .footer {
   color: white
 }
+@media only screen and (min-width: 600px) {
+  #pikachuImg {
+    height: 0px;
+  }
+}
