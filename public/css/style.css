@@ -12,7 +12,9 @@ body {
   display: inline-block;
 }
 .layout_links {
-  border: 10px solid black;
+  border: 3px solid black;
+  border-radius: 10px;
+
 }
 
 #page_name {
