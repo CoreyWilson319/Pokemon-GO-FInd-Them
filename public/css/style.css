@@ -42,9 +42,7 @@ ul {
   color:white;
   font-size: 30px;
 }
-#error {
-  height: 500px;
-}
+
 .footer {
   font-size: 20px;
   color: black;
@@ -107,6 +105,7 @@ ul {
 }
 #error {
   margin-left:25%;
+  height: 500px;
 }
 #details {
   color: rgb(53, 98, 221);
@@ -163,8 +162,18 @@ ul {
 .footer {
   color: white
 }
-@media only screen and (min-width: 600px) {
+/* @media only screen and (min-width: 600px) {
+  body {
+    color: black;
+    background-color: Red;
+  }
   #pikachuImg {
     height: 0px;
+    width: 0px;
   }
-}
+  #error {
+    height: 0px;    
+    width: 0px;    
+
+  }
+} */
